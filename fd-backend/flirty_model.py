@@ -23,10 +23,10 @@ y = iris.target  # Target (species)
 
 # Split the dataset into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-print("Top 10 rows of X_train:", X_train[:10])
-print("Top 10 rows of y_train:", y_train[:10])
-print("Top 10 rows of X_test:", X_test[:10])
-print("Top 10 rows of y_test:", y_test[:10])
+# print("Top 10 rows of X_train:", X_train[:10])
+# print("Top 10 rows of y_train:", y_train[:10])
+# print("Top 10 rows of X_test:", X_test[:10])
+# print("Top 10 rows of y_test:", y_test[:10])
 
 # Initialize the Random Forest classifier
 clf = RandomForestClassifier(n_estimators=100, random_state=42)
