@@ -28,14 +28,7 @@ const InputForm = () => {
 		}
 
 		// Proceed with form submission if all fields are filled
-		console.log("Form 1 data:", formData); // For testing purposes
-		// Send form data to the server
-		try {
-			const response = await axios.post("/api/v1/query", formData);
-			console.log("Form 1 data submission successful:", response.data);
-		} catch (error) {
-			console.error("Form 1 data submission failed:", error);
-		}
+		// console.log("Form 1 data:", formData); // For testing purposes
 		// navigate("/form2");
 		navigate("/result", { state: formData });
 	};

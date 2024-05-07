@@ -13,6 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post("/api/v1/query", async (req, res) => {
 	try {
+        console.log("Inside /api/v1/query")
 		// reading query data from the user
 		const { userName, query } = req.body;
 
@@ -28,26 +29,17 @@ app.post("/api/v1/query", async (req, res) => {
 			query,
 		});
 		newQuery.save();
-		res.json({ msg: "Query submitted successfully" });
+        const response = await axios.post(
+            "http://127.0.0.1:5001/api/query",
+            { query }
+        );
+        console.log("Response:", response.data);
+        const { result: isFlirty, class_name } = response.data;
+
+		res.json({ isFlirty, class_name });
 	} catch (error) {
 		res.status(500).json({ err: error.message });
 	}
-});
-
-app.post("/api/v1/flirty-text", async (req, res) => {
-    try {
-        const { query } = req.body;
-        // const response = await axios.post(
-        //     "https://flirty-text-classifier.herokuapp.com/api/v1/flirty-text",
-        //     { query }
-        // );
-        // randomly generate true or false
-        const isFlirty = Math.random() < 0.5;
-        // res.json(response.data);
-        res.json({ isFlirty });
-    } catch (error) {
-        res.status(500).json({ err: error.message });
-    }
 });
 
 // mongodb://localhost:27017

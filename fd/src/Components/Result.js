@@ -15,9 +15,11 @@ const Result = () => {
 		const checkFlirtyText = async () => {
 			try {
 				const response = await axios.post(
-					"/api/v1/flirty-text",
+					"/api/v1/query",
 					location.state
 				);
+				// console.log("Response:", response.data);
+
 				setIsTextFlirty(response.data.isFlirty);
 			} catch (error) {
 				console.error("Error checking flirty text:", error);
