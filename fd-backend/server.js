@@ -30,7 +30,7 @@ app.post("/api/v1/query", async (req, res) => {
 		});
 		newQuery.save();
         const response = await axios.post(
-            "http://127.0.0.1:5001/api/query",
+            "https://mohammedz.pythonanywhere.com/api/query",
             { query }
         );
         console.log("Response:", response.data);
